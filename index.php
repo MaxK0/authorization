@@ -40,6 +40,6 @@
       <button type="submit" id="submit">Продолжить</button>
     </form>
 
-    <p>У меня ещё нет <a href="/register.html">аккаунта</a></p>
+    <p>У меня ещё нет <a href="/register.php">аккаунта</a></p>
   </body>
 </html>

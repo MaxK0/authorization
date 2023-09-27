@@ -12,7 +12,7 @@
   <body>
     <h2>Регистрация</h2>
 
-    <form action="" class="card">
+    <form action="src/actions/register.php" class="card" method="post" enctype="multipart/form-data">
       <label for="name">
         Имя
         <input
@@ -74,7 +74,7 @@
       <button type="submit" id="submit" disabled>Продолжить</button>
     </form>
 
-    <p>У меня уже есть <a href="/login.html">аккаунт</a></p>
+    <p>У меня уже есть <a href="/index.php">аккаунт</a></p>
 
     <script src="/assets/app.js"></script>
   </body>
