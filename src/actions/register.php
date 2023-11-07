@@ -32,7 +32,7 @@ if (empty($password)) {
     addValidationError(fieldName: 'password', message: 'Пароль пустой');
 }
 
-if ($password != $passwordConfirmation) {
+if ($password !== $passwordConfirmation) {
     addValidationError(fieldName: 'passwordConfirmation', message: 'Пароли не совпадают');
 }
 
@@ -54,4 +54,22 @@ if (!empty($_SESSION['validation'])) {
 
 if (!empty($avatar)) {
     $avatarPath = uploadFile(file: $avatar, prefix: 'avatar');
+}
+
+$pdo = getPDO();
+
+$query = "INSERT INTO users (name, email, avatar, password) VALUES (:name, :email, :avatar, :password)";
+$params = [
+    'name' => $name,
+    'email' => $email,
+    'avatar' => $avatarPath,
+    'password' => password_hash($password, PASSWORD_DEFAULT)
+];
+$stmt = $pdo->prepare($query);
+
+try {
+    $stmt->execute($params);
+}
+catch (\Exception $e) {
+    die($e->getMessage());
 }
